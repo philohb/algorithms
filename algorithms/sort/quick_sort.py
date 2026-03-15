@@ -1,3 +1,6 @@
+import argparse
+
+
 def quick_sort(arr, simulation=False):
     """ Quick sort
         Complexity: best O(n log(n)) avg O(n log(n)), worst O(N^2)
@@ -30,3 +33,14 @@ def partition(arr, first, last):
             wall += 1
     arr[wall], arr[last] = arr[last], arr[wall]
     return wall
+
+
+def run_cli(argv=None):
+    parser = argparse.ArgumentParser(description="Quick sort numbers.")
+    parser.add_argument("numbers", nargs="+", type=int, help="Numbers to sort")
+    args = parser.parse_args(argv)
+    print(*quick_sort(args.numbers))
+
+
+if __name__ == "__main__":
+    run_cli()
