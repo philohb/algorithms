@@ -19,8 +19,11 @@ from algorithms.sort import (
     cocktail_shaker_sort,
     top_sort, top_sort_recursive
 )
+from algorithms.sort.quick_sort import run_cli
 
 import unittest
+from io import StringIO
+from contextlib import redirect_stdout
 
 
 def is_sorted(array):
@@ -84,6 +87,13 @@ class TestSuite(unittest.TestCase):
 
     def test_quick_sort(self):
         self.assertTrue(is_sorted(quick_sort([1, 3, 2, 5, 65, 23, 57, 1232])))
+
+    def test_quick_sort_script(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            run_cli(["5", "-1", "5", "2"])
+
+        self.assertEqual("-1 2 5 5", output.getvalue().strip())
 
     def test_selection_sort(self):
         self.assertTrue(is_sorted(selection_sort([1, 3, 2, 5, 65,
