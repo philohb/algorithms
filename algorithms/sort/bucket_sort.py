@@ -2,6 +2,7 @@ def bucket_sort(arr):
     ''' Bucket Sort
         Complexity: O(n^2)
         The complexity is dominated by nextSort
+        https://en.wikipedia.org/wiki/Bucket_sort
     '''
     # The number of buckets and make buckets
     num_buckets = len(arr)
@@ -21,7 +22,7 @@ def next_sort(arr):
     for i in range(1, len(arr)):
         j = i - 1
         key = arr[i]
-        while arr[j] > key and j >= 0:
+        while j >= 0 and arr[j] > key:
             arr[j+1] = arr[j]
             j = j - 1
         arr[j + 1] = key
